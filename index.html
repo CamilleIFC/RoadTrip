@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Route Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+            z-index: 0;
+        }
+
+        #infoBox {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        #routeInput {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        #routeInput input, #routeInput button {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="routeInput">
+        <h4>Route Information</h4>
+        <label for="start">Start Location:</label><br>
+        <input type="text" id="start" placeholder="Enter start location" /><br>
+        <label for="end">End Location:</label><br>
+        <input type="text" id="end" placeholder="Enter destination" /><br>
+        <button onclick="getRoute()">Get Route</button>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="infoBox">
+        <h4>Current Speed</h4>
+        <p id="currentSpeed">Current Speed: 0 km/h</p>
+        <p id="distanceTraveled">Distance Traveled: 0 km</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
